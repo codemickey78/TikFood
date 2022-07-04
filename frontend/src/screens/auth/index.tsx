@@ -13,13 +13,19 @@ import {
   RectButtonTrans,
 } from "../../components";
 import { useState } from "react";
+import {
+  createAccount,
+  resetUserPassword,
+  signInUser,
+} from "../../services/Auth/AuthServices";
 
 const LoginScreen = ({ navigation }: any) => {
   const [authEmail, setAuthEmail] = useState("");
   const [authPassword, setAuthPassword] = useState("");
   const loginUser = () => {
-    alert(authEmail);
-    alert(authPassword);
+    signInUser(authEmail, authPassword);
+    setAuthEmail("");
+    setAuthPassword("");
   };
 
   return (
@@ -65,9 +71,10 @@ const RegisterScreen = ({ navigation }: any) => {
   const [authPassword, setAuthPassword] = useState("");
 
   const registerUser = () => {
-    alert(authEmail);
-    alert(authFullName);
-    alert(authPassword);
+    createAccount(authEmail, authPassword, authFullName);
+    setAuthEmail("");
+    setAuthPassword("");
+    setAuthFullName("");
   };
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -108,7 +115,8 @@ const RegisterScreen = ({ navigation }: any) => {
 const ForgotPassScreen = ({ navigation }: any) => {
   const [authEmail, setAuthEmail] = useState("");
   const resetPassword = () => {
-    alert(authEmail);
+    resetUserPassword(authEmail);
+    setAuthEmail("");
   };
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
