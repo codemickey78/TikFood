@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { FONTS } from "../../constants";
-const CustomInputIcon = ({ icon, placeholder, keyBoard, isPass }: any) => {
+
+const CustomInputIcon = ({ icon, placeholder, keyBoard, isPass, inputValue }: any) => {
   return (
     <View style={styles.authFormControl}>
       <Ionicons
@@ -14,7 +15,9 @@ const CustomInputIcon = ({ icon, placeholder, keyBoard, isPass }: any) => {
         style={styles.authInput}
         placeholder={placeholder}
         keyboardType={keyBoard}
+        autoCapitalize="none"
         secureTextEntry={isPass}
+        onChangeText={(text) => inputValue(text)}
       />
     </View>
   );
@@ -27,7 +30,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderWidth: 1,
     alignItems: "center",
-    // padding: 10,
     borderColor: "rgba(0, 0, 0, 0.05)",
     overflow: "hidden",
     marginBottom: 10,

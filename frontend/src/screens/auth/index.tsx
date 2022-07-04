@@ -12,7 +12,16 @@ import {
   RectButton,
   RectButtonTrans,
 } from "../../components";
+import { useState } from "react";
+
 const LoginScreen = ({ navigation }: any) => {
+  const [authEmail, setAuthEmail] = useState("");
+  const [authPassword, setAuthPassword] = useState("");
+  const loginUser = () => {
+    alert(authEmail);
+    alert(authPassword);
+  };
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={authStyles.authContainer}>
@@ -22,22 +31,24 @@ const LoginScreen = ({ navigation }: any) => {
             icon="at-outline"
             placeholder="Email"
             keyBoard="email-address"
+            inputValue={setAuthEmail}
           />
           <CustomInputIcon
             icon="lock-closed-outline"
             placeholder="Password"
             keyBoard="default"
             isPass={true}
+            inputValue={setAuthPassword}
           />
         </View>
-        <View style={{alignItems: 'flex-end'}}>
+        <View style={{ alignItems: "flex-end" }}>
           <RectButtonTrans
             name={`Forgot Password?`}
             touchFunc={navigation}
             type="reset"
           />
         </View>
-        <RectButton name="Login" />
+        <RectButton name="Login" touchFunc={loginUser} />
         <RectButtonTrans
           name={`Dont't have an account! Register`}
           touchFunc={navigation}
@@ -49,6 +60,15 @@ const LoginScreen = ({ navigation }: any) => {
 };
 
 const RegisterScreen = ({ navigation }: any) => {
+  const [authEmail, setAuthEmail] = useState("");
+  const [authFullName, setAuthFullName] = useState("");
+  const [authPassword, setAuthPassword] = useState("");
+
+  const registerUser = () => {
+    alert(authEmail);
+    alert(authFullName);
+    alert(authPassword);
+  };
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={authStyles.authContainer}>
@@ -58,20 +78,23 @@ const RegisterScreen = ({ navigation }: any) => {
             icon="person-circle-outline"
             placeholder="Full name"
             keyBoard="default"
+            inputValue={setAuthFullName}
           />
           <CustomInputIcon
             icon="at-outline"
             placeholder="Email"
             keyBoard="email-address"
+            inputValue={setAuthEmail}
           />
           <CustomInputIcon
             icon="lock-closed-outline"
             placeholder="Password"
             keyBoard="default"
             isPass={true}
+            inputValue={setAuthPassword}
           />
         </View>
-        <RectButton name="Create account" />
+        <RectButton name="Create account" touchFunc={registerUser} />
         <RectButtonTrans
           name="I have an account! Sign In"
           touchFunc={navigation}
@@ -83,6 +106,10 @@ const RegisterScreen = ({ navigation }: any) => {
 };
 
 const ForgotPassScreen = ({ navigation }: any) => {
+  const [authEmail, setAuthEmail] = useState("");
+  const resetPassword = () => {
+    alert(authEmail);
+  };
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={authStyles.authContainer}>
@@ -91,10 +118,11 @@ const ForgotPassScreen = ({ navigation }: any) => {
           <CustomInputIcon
             icon="at-outline"
             placeholder="Email"
+            inputValue={setAuthEmail}
             keyBoard="email-address"
           />
         </View>
-        <RectButton name="Reset " />
+        <RectButton name="Reset " touchFunc={resetPassword} />
         <RectButtonTrans
           name={`I have an account! Sign In`}
           touchFunc={navigation}

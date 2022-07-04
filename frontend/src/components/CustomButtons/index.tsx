@@ -4,7 +4,7 @@ import { COLORS, FONTS, SIZES } from "../../constants";
 
 const RectButton = ({ name, touchFunc }: any) => {
   return (
-    <TouchableOpacity onPress={() => alert("hello")}>
+    <TouchableOpacity onPress={() => touchFunc()}>
       <View style={styles.btnContainer}>
         <Text
           style={{
