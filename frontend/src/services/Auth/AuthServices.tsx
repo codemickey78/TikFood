@@ -2,10 +2,14 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 import { fireauth, firestore } from "../../environments/config";
+
+
+
 const createAccount = async (
   email: string,
   password: string,
@@ -37,7 +41,7 @@ const signInUser = async (email: string, password: string) => {
       password
     );
     alert("Logged in successful!");
-    alert(signInAuth.user.email)
+    alert(signInAuth.user.email);
   } catch (error: any) {
     console.log(error?.message);
   }
@@ -52,4 +56,8 @@ const resetUserPassword = async (email: string) => {
   }
 };
 
-export { createAccount, signInUser, resetUserPassword };
+export {
+  createAccount,
+  signInUser,
+  resetUserPassword,
+};

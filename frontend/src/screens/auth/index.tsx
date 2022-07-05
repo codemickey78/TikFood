@@ -1,7 +1,5 @@
 import {
   View,
-  Text,
-  ScrollView,
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
