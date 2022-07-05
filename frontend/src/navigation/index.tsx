@@ -57,7 +57,7 @@ export default function Navigation() {
             ></Stack.Screen>
           </Stack.Group>
         ) : (
-          <Stack.Group>
+          <Stack.Group screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={Home}></Stack.Screen>
           </Stack.Group>
         )}

@@ -20,6 +20,14 @@ const RectButton = ({ name, touchFunc }: any) => {
   );
 };
 
+const RecordButton = ({ recordVideo, isCamReady, stopVideo }: any) => {
+  return (
+    <TouchableOpacity onLongPress={() => recordVideo()} disabled={!isCamReady} onPressOut={() => stopVideo()}>
+      <View style={styles.recordBtn}></View>
+    </TouchableOpacity>
+  );
+};
+
 const RectButtonTrans = ({ name, touchFunc, type }: any) => {
   return (
     <TouchableOpacity
@@ -48,13 +56,22 @@ const RectButtonTrans = ({ name, touchFunc, type }: any) => {
   );
 };
 
-export { RectButton, RectButtonTrans };
+export { RectButton, RectButtonTrans, RecordButton };
 
 const styles = StyleSheet.create({
   btnLight: {
     width: "100%",
     padding: SIZES.medium,
     alignItems: "center",
+  },
+  recordBtn: {
+    width: 80,
+    height: 80,
+    borderRadius: 100,
+    borderWidth: 10,
+    borderColor: "#ee9999fc",
+    backgroundColor: COLORS.primary,
+    alignSelf: "center",
   },
   btnContainer: {
     width: "100%",
