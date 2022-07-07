@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   
 } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 import { fireauth, firestore } from "../../environments/config";
 

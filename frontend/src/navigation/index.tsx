@@ -10,13 +10,14 @@ import {
   RegisterScreen,
   LoginScreen,
   Home,
+  SavePost,
 } from "../screens/screens";
 import { useDispatch } from "react-redux";
 import { firestore, fireauth } from "../environments/config";
 import { changeUserState } from "../redux/features/AuthSlice";
 
 export default function Navigation() {
-  const [tabTitle, setTabTitle] = useState('Home')
+  const [tabTitle, setTabTitle] = useState("Home");
   const dispatch = useDispatch();
   const userAuthStateListener = () => {
     onAuthStateChanged(fireauth, (user) => {
@@ -57,9 +58,25 @@ export default function Navigation() {
             ></Stack.Screen>
           </Stack.Group>
         ) : (
-          <Stack.Group screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Home" component={Home}></Stack.Screen>
-          </Stack.Group>
+          // <Stack.Group screenOptions={{ headerShown: false }}>
+          <>
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{ headerShown: false }}
+            ></Stack.Screen>
+            <Stack.Screen
+              name="SavePost"
+              component={SavePost}
+              options={{
+                headerShown: true,
+                title: "Post",
+                headerTintColor: "#000",
+                headerBackTitleVisible: false,
+              }}
+            ></Stack.Screen>
+          </>
+          // {/* </Stack.Group> */}
         )}
       </Stack.Navigator>
       <StatusBar style="auto" />
