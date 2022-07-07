@@ -1,5 +1,5 @@
 
-# Project Title
+# TikFood App
 
 A TikTok Clone app for Foods which I named it as TikFoods. It's build in 
 React Native & Firebase.
