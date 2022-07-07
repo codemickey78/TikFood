@@ -1,7 +1,7 @@
 
-# TikFood App
+# TikFoods App
 
-A TikTok Clone app for Foods which I named it as TikFoods. It's build in 
+A TikTok Clone app for Foods which I named it as TikFoods. It's built in 
 React Native & Firebase.
 
 
