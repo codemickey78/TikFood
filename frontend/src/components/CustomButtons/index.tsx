@@ -51,6 +51,16 @@ const RectOutlineButton = ({ name, touchFunc, icon, color }: any) => {
   );
 };
 
+const IconButton = ({ touchFunc, icon }: any) => {
+  return (
+    <TouchableOpacity onPress={() => touchFunc()}>
+      <View style={styles.btnIconMain}>
+        <Ionicons name={icon} size={30} color="#fff" />
+      </View>
+    </TouchableOpacity>
+  );
+};
+
 const CameraControlBtn = ({ name, touchFunc, icon }: any) => {
   return (
     <TouchableOpacity onPress={() => touchFunc()}>
@@ -129,9 +139,15 @@ export {
   GalleryPickerButton,
   CameraControlBtn,
   RectOutlineButton,
+  IconButton
 };
 
 const styles = StyleSheet.create({
+  btnIconMain: {
+    backgroundColor: '#0303032c',
+    padding: 5,
+    borderRadius: 10
+  },
   postBtn: {
     flexDirection: "row",
     alignItems: "center",

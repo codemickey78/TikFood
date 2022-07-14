@@ -5,6 +5,8 @@ import pasta from '../../assets/images/pasta.png';
 import pizza from '../../assets/images/pizza.png';
 import smoothie from '../../assets/images/smoothie.png';
 import steak from '../../assets/images/steak.png';
+import gob3 from '../../assets/images/gob3.jpeg';
+import profile from '../../assets/images/profile.jpeg';
 
 export default {
     logo, cake,
@@ -12,5 +14,7 @@ export default {
     pasta,
     pizza,
     smoothie,
-    steak
+    steak,
+    gob3,
+    profile
 }
