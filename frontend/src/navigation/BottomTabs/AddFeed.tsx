@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from "react";
 import {
   Camera,
@@ -23,7 +23,6 @@ const AddFeed = () => {
   const [hasAudioPermission, setHasAudioPermission] = useState(false);
   const [hasGalleryPermission, setHasGalleryPermission] = useState(false);
   const [userMedia, setUserMedia] = useState([]);
-  const [videoData, setVideoData] = useState(null);
   const [cameraRef, setCameraRef] = useState();
   const [flash, setFlash] = useState(FlashMode.on);
   const [isCameraReady, setIsCameraReady] = useState(false);
@@ -60,9 +59,8 @@ const AddFeed = () => {
           const data = await videoRecord;
           const source = data.uri;
           const videoThumbnail = await getThumbnail(source);
-          setVideoData(source);
           navigation.navigate("SavePost", {
-            source: videoData,
+            source: source,
             thumbnail: videoThumbnail,
           });
         }
@@ -103,7 +101,6 @@ const AddFeed = () => {
     const results = await ImagePicker.launchImageLibraryAsync(galleryOpts);
 
     if (!results.cancelled && results.uri !== "") {
-      console.log(results.uri);
       const videoThumbnail = await getThumbnail(results.uri);
       navigation.navigate("SavePost", {
         source: results.uri,

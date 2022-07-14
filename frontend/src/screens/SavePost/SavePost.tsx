@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import {
   View,
@@ -12,12 +13,28 @@ import {
 import { categoryList } from "../../../assets/data/alldata";
 import { Category, RectOutlineButton } from "../../components";
 import { FONTS, SIZES } from "../../constants";
+import { publishPost } from "../../services/PostService";
 import styles from "./styles";
+
 const SavePost = (props: any) => {
+  const navigation = useNavigation();
   const [brief, setBrief] = useState("");
   const [category, setCategory] = useState("burger");
   const sourceData = props.route.params.source;
   const imgThumbnail = props.route.params.thumbnail;
+
+//   console.log(sourceData);
+
+  const saveUserPost = () => {
+    const postData = {
+      desc: brief,
+      type: category,
+      likesCount: 0,
+      commentCount: 0,
+      shareCount: 0,
+    };
+    publishPost(sourceData, postData);
+  };
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -35,8 +52,8 @@ const SavePost = (props: any) => {
           <View style={styles.postImgMain}>
             <Image
               style={styles.postImg}
-              resizeMode='cover'
-              source={{uri: imgThumbnail}}
+              resizeMode="cover"
+              source={{ uri: imgThumbnail }}
             />
           </View>
         </View>
@@ -64,8 +81,18 @@ const SavePost = (props: any) => {
           )}
         />
         <View style={styles.bottomCon}>
-          <RectOutlineButton name="Cancel" icon="close" color={false} />
-          <RectOutlineButton name="Post" icon="cloud-upload" color={true} />
+          <RectOutlineButton
+            name="Cancel"
+            icon="close"
+            color={false}
+            touchFunc={navigation.goBack}
+          />
+          <RectOutlineButton
+            name="Post"
+            icon="cloud-upload"
+            color={true}
+            touchFunc={saveUserPost}
+          />
         </View>
       </SafeAreaView>
     </TouchableWithoutFeedback>

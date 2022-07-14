@@ -2,6 +2,10 @@ import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
 import Navigation from "./src/navigation";
 import store from "./src/redux/storeHandler";
+import firebase from "firebase/app";
+import { firebaseConfig } from "./src/environments/config";
+
+firebase.initializeApp(firebaseConfig);
 
 export default function App() {
   const [loaded] = useFonts({
