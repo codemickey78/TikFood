@@ -21,13 +21,14 @@ const profileStyle = StyleSheet.create({
         position: "absolute",
         width: "100%",
         height: "100%",
+        // backgroundColor: '#497',
     },
     profMain: {
         width: '100%',
         height: '100%',
-        // backgroundColor: '#fff',
+        // overflow: 'scroll',
         position: 'absolute',
-        top: '20%',
+        top: '90%',
     }
 });
 

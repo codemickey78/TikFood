@@ -1,8 +1,16 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 import { ProfileCounts, RectOutlineButton } from "..";
-import { assets, FONTS, SIZES } from "../../constants";
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { assets, COLORS, FONTS, SIZES } from "../../constants";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import IonIcons from "@expo/vector-icons/Ionicons";
+import {
+  AllPosts,
+  Archives,
+  Bookmarks,
+  LikedPosts,
+} from "../../navigation/ProfileTabs";
 
+const ProfileTab = createMaterialTopTabNavigator();
 
 const ProfileContainer = () => {
   return (
@@ -34,7 +42,58 @@ const ProfileContainer = () => {
         <View style={{ width: "50%" }}>
           <RectOutlineButton name="Message Me" icon="mail" color={true} />
         </View>
-
+      </View>
+      <View style={{ width: "100%", height: "100%", marginTop: 10}}>
+        <ProfileTab.Navigator
+          initialRouteName="AllPosts"
+          sceneContainerStyle={{backgroundColor: '#fff'}}
+          screenOptions={{
+            tabBarActiveTintColor: COLORS.primary,
+            tabBarShowIcon: true,
+            tabBarInactiveTintColor: "#999",
+            tabBarShowLabel: false,
+            tabBarIndicatorStyle: {
+              backgroundColor: COLORS.primary,
+            },
+          }}
+        >
+          <ProfileTab.Screen 
+            options={{
+              tabBarIcon: ({ color }) => (
+                <IonIcons name="film" color={color} size={24} />
+              ),
+            }}
+            component={AllPosts}
+            name="AllPosts"
+          ></ProfileTab.Screen>
+          <ProfileTab.Screen
+            options={{
+              tabBarIcon: ({ color }) => (
+                <IonIcons name="file-tray" color={color} size={24} />
+              ),
+            }}
+            component={Archives}
+            name="Archives"
+          ></ProfileTab.Screen>
+          <ProfileTab.Screen
+            options={{
+              tabBarIcon: ({ color }) => (
+                <IonIcons name="bookmarks" color={color} size={24} />
+              ),
+            }}
+            component={Bookmarks}
+            name="Bookmarks"
+          ></ProfileTab.Screen>
+          <ProfileTab.Screen
+            options={{
+              tabBarIcon: ({ color }) => (
+                <IonIcons name="heart" color={color} size={24} />
+              ),
+            }}
+            component={LikedPosts}
+            name="LikedPosts"
+          ></ProfileTab.Screen>
+        </ProfileTab.Navigator>
       </View>
     </View>
   );
